@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <style>
+  .center-content {
+    text-align: center;
+  }
+
+  .application-form {
+    display: inline-block;
+  }
+
+  .application-button {
+    background-color: blue; /* Set your desired button color */
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s;
+  }
+
+  .application-button:hover {
+    transform: scale(1.1);
+    background-color: #218838; /* Set your desired hover color */
+  }
+</style>
+
+  <div class="center-content">
+    <h2>Click Here And Submit Your Application</h2>
+
+    <form method="post" action="{% url 'application' %}" class="application-form">
+      {% csrf_token %}
+      <button type="submit" class="application-button">Go to Application</button>
+    </form>
+  </div>
+{% endblock %}

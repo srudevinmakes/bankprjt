@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+  Login - ABC Bank
+{% endblock %}
+
+{% block content %}
+  <style>
+    /* Style for the Login button */
+    input[type="submit"] {
+      background-color: #007bff; /* Set your desired button color */
+      color: white;
+      padding: 10px;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+    }
+
+    /* Hover effect on mouse hover for Login button */
+    input[type="submit"]:hover {
+      background-color: #0056b3; /* Set your desired hover color */
+    }
+  </style>
+
+  <h2>Login</h2>
+  <form method="post" action="{% url 'login' %}">
+    {% csrf_token %}
+    <label for="username">Username:</label>
+    <input type="text" name="username" required>
+    <br>
+    <label for="password">Password:</label>
+    <input type="password" name="password" required>
+    <br>
+    <!-- Add other login form fields if needed -->
+    <input type="submit" value="Login">
+  </form>
+  <p>Don't have an account? <a href="{% url 'register' %}">Register</a></p>
+{% endblock %}

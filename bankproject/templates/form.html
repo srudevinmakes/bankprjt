@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+  Application Form - ABC Bank
+{% endblock %}
+
+{% block content %}
+  <style>
+    /* Center-align the form container */
+    .form-container {
+      text-align: center;
+    }
+
+    /* Style for form fields */
+    form {
+      display: inline-block;
+      text-align: left;
+    }
+
+    /* Add some spacing between form elements for better readability */
+    input, select, textarea {
+      margin-bottom: 10px;
+    }
+  </style>
+
+  <h2 style="text-align:center;">Application Form</h2>
+  <!-- Registration form fields -->
+  <div class="form-container">
+    <form method="post" action="{% url 'index' %}">
+      {% csrf_token %}
+      <input type="text" name="username" placeholder="Name" required>
+      <br>
+      <input type="date" name="dob" required>
+      <br>
+      <input type="radio" id="male" name="gender" value="male">
+      <label for="male">Male</label>
+      <input type="radio" id="female" name="gender" value="female">
+      <label for="female">Female</label>
+      <input type="radio" id="other" name="gender" value="other">
+      <label for="other">Other</label>
+      <br>
+      <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Phone Number" required>
+      <br>
+      <input type="email" name="email" placeholder="Email" required>
+      <br>
+      <textarea id="address" name="address" rows="4" cols="50" placeholder="Address" required></textarea>
+      <br>
+      <select name="districts" required>
+        {% for district in districts %}
+          <option value="{{ district }}">{{ district }}</option>
+        {% endfor %}
+      </select>
+      <br>
+      <select name="branches" required>
+        {% for district, branch_list in branches.items %}
+          <optgroup label="{{ district }}">
+            {% for branch in branch_list %}
+              <option value="{{ branch }}">{{ branch }}</option>
+            {% endfor %}
+          </optgroup>
+        {% endfor %}
+      </select>
+      <br>
+      <!-- Add other registration form fields if needed -->
+      <input type="submit" value="Submit">
+    </form>
+  </div>
+  <br>
+  <!--  <a href="{% url 'logout' %}">logout</a>-->
+{% endblock %}

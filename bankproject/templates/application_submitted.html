@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Application Submitted - ABC Bank
+{% endblock %}
+
+{% block content %}
+<div class="center-content">
+  <h2 style="text-align: center;">Application Submitted Successfully</h2>
+  <!-- <p style="text-align: center;">Your application has been submitted successfully!</p> -->
+  <a href="{% url 'home' %}" style="display: block; text-align: center; margin-top: 20px;">
+    <button style="background-color: blue; color: white;">Go to Home Page</button>
+  </a>
+</div>
+{% endblock %}

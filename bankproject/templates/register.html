@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+  Register - ABC Bank
+{% endblock %}
+
+{% block content %}
+  <style>
+    /* Style for the Registration form */
+    form {
+    }
+
+    label {
+      display: block;
+      margin: .2px 0;
+    }
+
+    input {
+
+    }
+
+    /* Style for the Register button */
+    .register-button {
+      background-color: #28a745; /* Set your desired button color */
+      color: white;
+      padding: 10px;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.3s, background-color 0.3s;
+    }
+
+    /* Zoom effect on mouse hover for Register button */
+    .register-button:hover {
+      transform: scale(1.1);
+      background-color: #218838; /* Set your desired hover color */
+    }
+  </style>
+
+  <h2>Register</h2>
+  <!-- Registration form fields -->
+  <form method="post" action="{% url 'register' %}">
+    {% csrf_token %}
+    <label for="username">Username:</label>
+    <input type="text" name="username" required>
+    <br>
+    <label for="first_name">First Name:</label>
+    <input type="text" name="first_name" required>
+    <br>
+    <label for="last_name">Last Name:</label>
+    <input type="text" name="last_name" required>
+    <br>
+    <label for="email">Email:</label>
+    <input type="email" name="email" required>
+    <br>
+    <label for="password">Password:</label>
+    <input type="password" name="password" required>
+    <br>
+    <label for="password1">Confirm Password:</label>
+    <input type="password" name="password1" required>
+    <br>
+    <!-- Add other registration form fields if needed -->
+    <input type="submit" value="Register" class="register-button">
+  </form>
+  <br>
+  <p>Already have an account? <a href="{% url 'login' %}">Login here</a></p>
+{% endblock %}
